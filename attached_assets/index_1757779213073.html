@@ -1,0 +1,919 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOT Technology - Transforming Africa Through Local Innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .tech-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+        }
+        
+        .tech-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+        
+        .tech-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .tech-button:hover::before {
+            left: 100%;
+        }
+        
+        .tech-button-outline {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+        
+        .tech-button-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #00d4ff 0%, #ffffff 50%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 204, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .icon-container:hover::before {
+            opacity: 1;
+        }
+        
+        .icon-container:hover {
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 153, 204, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+        }
+        
+        .accent-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 153, 204, 0.02) 100%);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .stats-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+            to { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .section-padding {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-effect backdrop-blur-[2px] border-white/10 z-50" style="background: rgba(255, 255, 255, 0);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-32 h-8 sm:w-auto sm:h-auto rounded-md flex items-center justify-center" style="background: rgba(255, 255, 255, 0.3);">
+                            <img src="DOT.png" alt="DOT Technology Logo" class="h-auto sm:h-20 w-auto" style="min-width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="flex items-center space-x-8 xl:space-x-12">
+                        <a href="#home" class="nav-link text-gray-300 font-normal text-sm">Home</a>
+                        <a href="#about" class="nav-link text-gray-300 font-normal text-sm">About</a>
+                        <a href="#solutions" class="nav-link text-gray-300 font-normal text-sm">Solutions</a>
+                        <a href="#innovation" class="nav-link text-gray-300 font-normal text-sm">Innovation</a>
+                        <a href="#partnerships" class="nav-link text-gray-300 font-normal text-sm">Partners</a>
+                        <a href="#careers" class="nav-link text-gray-300 font-normal text-sm">Careers</a>
+                        <a href="#contact" class="nav-link text-gray-300 font-normal text-sm">Contact</a>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-cyan-400 focus:outline-none p-2">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden glass-effect border-t border-white/10">
+            <div class="px-4 sm:px-6 py-4 space-y-3">
+                <a href="#home" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">Home</a>
+                <a href="#about" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">About</a>
+                <a href="#solutions" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">Solutions</a>
+                <a href="#innovation" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">Innovation</a>
+                <a href="#partnerships" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">Partners</a>
+                <a href="#careers" class="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">Careers</a>
+                <a href="#contact" class="block py-3 text-gray-300 font-normal text-sm">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16 sm:pt-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+            <div class="max-w-4xl">
+                <h1 class="hero-title text-3xl sm:text-5xl lg:text-7xl font-light text-white mb-6 sm:mb-8 leading-tight section-fade glow-text">
+                    Transforming Africa<br>
+                    Through Local<br>
+                    <span class="text-gradient font-normal">Innovation</span>
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-2xl font-light leading-relaxed section-fade">
+                    DOT Technology is building Africa's future in technology manufacturing
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 section-fade">
+                    <button onclick="scrollToSection('about')" class="tech-button text-white px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
+                        Learn More
+                    </button>
+                    <button onclick="scrollToSection('partnerships')" class="tech-button-outline px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding py-16 sm:py-24 lg:py-32 dark-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Proudly African,<br>
+                    <span class="text-gradient">Globally Connected</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    DOT Technology, a sister company of Infranet, is pioneering local assembly and innovation that serves the unique needs of African markets.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                <div class="section-fade">
+                    <div class="space-y-8 sm:space-y-12">
+                        <div>
+                            <h3 class="text-sm font-medium text-cyan-400 mb-4 tracking-wide uppercase">Vision</h3>
+                            <p class="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
+                                Building Africa's technology ecosystem through sustainable manufacturing and innovation.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-sm font-medium text-cyan-400 mb-4 tracking-wide uppercase">Mission</h3>
+                            <p class="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
+                                Driving innovation and creating sustainable technology solutions that transform African communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-fade floating-animation">
+                    <div class="stats-card p-6 sm:p-8 lg:p-12 rounded-xl">
+                        <h3 class="text-xl sm:text-2xl font-light text-white mb-6 sm:mb-8">Why Africa?</h3>
+                        <p class="text-gray-300 mb-8 sm:mb-12 font-light leading-relaxed">
+                            With the world's youngest and fastest-growing population, Africa is positioned for unprecedented digital growth.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6 sm:gap-8">
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-light text-cyan-400 mb-2 glow-text">1.4B+</div>
+                                <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Population</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-light text-cyan-400 mb-2 glow-text">60%</div>
+                                <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Under 25</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-light text-cyan-400 mb-2 glow-text">500M+</div>
+                                <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">Internet Users</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl sm:text-3xl font-light text-cyan-400 mb-2 glow-text">3.2%</div>
+                                <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">GDP Growth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="section-padding py-16 sm:py-24 lg:py-32 accent-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Solutions Designed<br>
+                    <span class="text-gradient">for Africa</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    Technology and devices tailored for African markets, built locally with global standards.
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 card-grid">
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Education</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">Affordable devices for schools and universities, enabling digital learning across Africa</p>
+                </div>
+                
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Healthcare</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">Technology that supports hospitals and telemedicine, improving healthcare access</p>
+                </div>
+                
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Public Sector</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">Digital governance tools that enhance public service delivery and transparency</p>
+                </div>
+                
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Fintech</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">Secure and accessible financial solutions driving financial inclusion</p>
+                </div>
+                
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Smart Infrastructure</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">IoT and smart city innovations for sustainable urban development</p>
+                </div>
+                
+                <div class="card-hover p-6 sm:p-8 section-fade rounded-xl">
+                    <div class="icon-container">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Devices & Assembly</h3>
+                    <p class="text-gray-300 font-light leading-relaxed">Locally assembled laptops and smart devices built for African conditions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section id="innovation" class="section-padding py-16 sm:py-24 lg:py-32 dark-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Pioneering Local<br>
+                    <span class="text-gradient">Innovation</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    Focused on research, sustainability, and security to drive global standards from Africa.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+                <div class="space-y-12 lg:space-y-16 section-fade">
+                    <div>
+                        <h3 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Research & Development</h3>
+                        <p class="text-base sm:text-lg text-gray-300 mb-8 font-light leading-relaxed">
+                            Creating innovative solutions that address Africa's unique challenges while meeting global quality standards.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="text-gray-400 font-light">Local innovation labs</div>
+                            <div class="text-gray-400 font-light">Collaborative research programs</div>
+                            <div class="text-gray-400 font-light">Technology transfer initiatives</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Cybersecurity</h3>
+                        <p class="text-base sm:text-lg text-gray-300 mb-8 font-light leading-relaxed">
+                            Ensuring safety, trust, and compliance in all our technology solutions with world-class security standards.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="text-gray-400 font-light">End-to-end encryption</div>
+                            <div class="text-gray-400 font-light">Compliance frameworks</div>
+                            <div class="text-gray-400 font-light">Security auditing</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-12 lg:space-y-16 section-fade">
+                    <div>
+                        <h3 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Sustainability</h3>
+                        <p class="text-base sm:text-lg text-gray-300 mb-8 font-light leading-relaxed">
+                            Committed to eco-friendly manufacturing practices that protect Africa's environment for future generations.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="text-gray-400 font-light">Green manufacturing processes</div>
+                            <div class="text-gray-400 font-light">Renewable energy integration</div>
+                            <div class="text-gray-400 font-light">Circular economy principles</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Future Roadmap</h3>
+                        <p class="text-base sm:text-lg text-gray-300 mb-8 font-light leading-relaxed">
+                            Phased growth across Africa with expanded capacity and new technology centers in key markets.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="text-gray-400 font-light">Multi-country expansion</div>
+                            <div class="text-gray-400 font-light">Capacity scaling</div>
+                            <div class="text-gray-400 font-light">Technology diversification</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section id="partnerships" class="section-padding py-16 sm:py-24 lg:py-32 accent-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Building an African<br>
+                    <span class="text-gradient">Tech Ecosystem</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    Collaborating with partners across infrastructure, academia, and industry to create lasting impact.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+                <div class="lg:col-span-2 section-fade">
+                    <div class="glass-effect p-6 sm:p-8 lg:p-12 text-white rounded-xl pulse-glow">
+                        <h3 class="text-xl sm:text-2xl font-light mb-6 sm:mb-8">Strategic Partners</h3>
+                        <p class="text-gray-300 mb-8 sm:mb-12 font-light leading-relaxed">
+                            We collaborate with leading organizations to build a comprehensive technology ecosystem that serves all of Africa.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium mb-3 text-cyan-400">Infranet Partnership</h4>
+                                <p class="text-gray-300 text-sm font-light">Leveraging infrastructure expertise for technology deployment</p>
+                            </div>
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium mb-3 text-cyan-400">Academic Institutions</h4>
+                                <p class="text-gray-300 text-sm font-light">Research collaboration and talent development programs</p>
+                            </div>
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium mb-3 text-cyan-400">Supply Chain Partners</h4>
+                                <p class="text-gray-300 text-sm font-light">Local and global suppliers ensuring quality and efficiency</p>
+                            </div>
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium mb-3 text-cyan-400">Government Relations</h4>
+                                <p class="text-gray-300 text-sm font-light">Policy collaboration for digital transformation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8 sm:space-y-12 section-fade">
+                    <div class="card-hover p-6 sm:p-8 rounded-xl">
+                        <h3 class="text-lg font-medium text-white mb-6">For Investors</h3>
+                        <p class="text-gray-300 mb-6 sm:mb-8 font-light leading-relaxed">
+                            Discover the market potential and financial opportunities in Africa's tech revolution.
+                        </p>
+                        <button class="tech-button text-white px-6 py-3 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
+                            Investment Opportunities
+                        </button>
+                    </div>
+                    
+                    <div class="card-hover p-6 sm:p-8 rounded-xl">
+                        <h3 class="text-lg font-medium text-white mb-6">Collaboration</h3>
+                        <p class="text-gray-300 mb-6 sm:mb-8 font-light leading-relaxed">
+                            Open opportunities for suppliers, fintech players, NGOs, and governments.
+                        </p>
+                        <button onclick="scrollToSection('contact')" class="tech-button-outline px-6 py-3 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
+                            Partner With Us
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="section-padding py-16 sm:py-24 lg:py-32 dark-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Be Part of Africa's<br>
+                    <span class="text-gradient">Digital Future</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    Join our team and help build the technology that will transform Africa.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                <div class="section-fade">
+                    <div class="space-y-8 sm:space-y-12">
+                        <div>
+                            <h3 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Why Join DOT?</h3>
+                            <div class="space-y-6 sm:space-y-8">
+                                <div>
+                                    <h4 class="font-medium text-white mb-3">Innovative Culture</h4>
+                                    <p class="text-gray-300 font-light leading-relaxed">Work on cutting-edge technology that's shaping Africa's future</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-medium text-white mb-3">Professional Growth</h4>
+                                    <p class="text-gray-300 font-light leading-relaxed">Continuous learning and development opportunities</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-medium text-white mb-3">Meaningful Impact</h4>
+                                    <p class="text-gray-300 font-light leading-relaxed">Contribute to Africa's technological transformation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-fade floating-animation">
+                    <div class="glass-effect p-6 sm:p-8 lg:p-12 rounded-xl">
+                        <h3 class="text-xl sm:text-2xl font-light text-white mb-8 sm:mb-12">Open Positions</h3>
+                        
+                        <div class="space-y-6 sm:space-y-8">
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium text-cyan-400 mb-2">Software Engineers</h4>
+                                <p class="text-gray-300 text-sm font-light">Full-stack development, mobile apps, embedded systems</p>
+                            </div>
+                            
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium text-cyan-400 mb-2">R&D Specialists</h4>
+                                <p class="text-gray-300 text-sm font-light">Innovation labs, product development, research</p>
+                            </div>
+                            
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium text-cyan-400 mb-2">Manufacturing Engineers</h4>
+                                <p class="text-gray-300 text-sm font-light">Assembly processes, quality control, automation</p>
+                            </div>
+                            
+                            <div class="border-l border-cyan-400 pl-4 sm:pl-6">
+                                <h4 class="font-medium text-cyan-400 mb-2">Graduate Programs</h4>
+                                <p class="text-gray-300 text-sm font-light">Internships and graduate development opportunities</p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-8 sm:mt-12 tech-button text-white py-3 sm:py-4 font-normal text-sm tracking-wide rounded-lg">
+                            View All Positions
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding py-16 sm:py-24 lg:py-32 accent-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16 sm:mb-20 lg:mb-24 section-fade">
+                <h2 class="section-title text-2xl sm:text-4xl lg:text-5xl font-light text-white mb-6 sm:mb-8 leading-tight">
+                    Let's Build the<br>
+                    <span class="text-gradient">Future Together</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed">
+                    Ready to partner with us or learn more? Get in touch today.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24">
+                <div class="section-fade">
+                    <form class="space-y-6 sm:space-y-8">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-cyan-400 mb-3 tracking-wide uppercase">First Name</label>
+                                <input type="text" class="w-full px-0 py-3 sm:py-4 border-0 border-b border-gray-600 bg-transparent text-white focus:ring-0 focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-cyan-400 mb-3 tracking-wide uppercase">Last Name</label>
+                                <input type="text" class="w-full px-0 py-3 sm:py-4 border-0 border-b border-gray-600 bg-transparent text-white focus:ring-0 focus:border-cyan-400 transition-colors">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-cyan-400 mb-3 tracking-wide uppercase">Email</label>
+                            <input type="email" class="w-full px-0 py-3 sm:py-4 border-0 border-b border-gray-600 bg-transparent text-white focus:ring-0 focus:border-cyan-400 transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-cyan-400 mb-3 tracking-wide uppercase">Inquiry Type</label>
+                            <select class="w-full px-0 py-3 sm:py-4 border-0 border-b border-gray-600 bg-transparent text-white focus:ring-0 focus:border-cyan-400 transition-colors">
+                                <option class="bg-gray-900">Partnership Opportunity</option>
+                                <option class="bg-gray-900">Investment Inquiry</option>
+                                <option class="bg-gray-900">General Question</option>
+                                <option class="bg-gray-900">Career Opportunity</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-cyan-400 mb-3 tracking-wide uppercase">Message</label>
+                            <textarea rows="4" class="w-full px-0 py-3 sm:py-4 border-0 border-b border-gray-600 bg-transparent text-white focus:ring-0 focus:border-cyan-400 transition-colors resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="tech-button text-white px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
+                            Send Message
+                        </button>
+                        
+                        <p class="text-xs text-gray-400 mt-6 sm:mt-8">
+                            <span class="bg-gray-800 text-cyan-400 px-2 py-1 rounded">Demo Form</span> - This is a sample contact form for demonstration purposes
+                        </p>
+                    </form>
+                </div>
+                
+                <div class="section-fade">
+                    <div class="space-y-8 sm:space-y-12">
+                        <div>
+                            <h3 class="text-sm font-medium text-cyan-400 mb-6 sm:mb-8 tracking-wide uppercase">Get in Touch</h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-6 h-6 mt-1">
+                                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white mb-2">Email</div>
+                                        <div class="text-gray-300 font-light">info@dottechnology.africa</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-6 h-6 mt-1">
+                                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white mb-2">Phone</div>
+                                        <div class="text-gray-300 font-light">+27 11 123 4567</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-6 h-6 mt-1">
+                                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-white mb-2">Address</div>
+                                        <div class="text-gray-300 font-light">Johannesburg, South Africa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-sm font-medium text-cyan-400 mb-6 tracking-wide uppercase">Follow Us</h4>
+                            <div class="flex space-x-6">
+                                <a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors font-light text-sm">Twitter</a>
+                                <a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors font-light text-sm">LinkedIn</a>
+                                <a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors font-light text-sm">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16 sm:py-20 lg:py-24 border-t border-cyan-400/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
+                <div class="sm:col-span-2 lg:col-span-2">
+                    <div class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 tracking-tight text-gradient">
+                        DOT Technology
+                    </div>
+                    <p class="text-gray-400 font-light leading-relaxed max-w-md">
+                        Transforming Africa through local innovation and sustainable technology manufacturing.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-medium mb-4 sm:mb-6 tracking-wide uppercase text-cyan-400">Company</h4>
+                    <ul class="space-y-3 sm:space-y-4 text-gray-400 font-light">
+                        <li><a href="#about" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="#careers" class="hover:text-cyan-400 transition-colors">Careers</a></li>
+                        <li><a href="#innovation" class="hover:text-cyan-400 transition-colors">Innovation</a></li>
+                        <li><a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-medium mb-4 sm:mb-6 tracking-wide uppercase text-cyan-400">Connect</h4>
+                    <ul class="space-y-3 sm:space-y-4 text-gray-400 font-light">
+                        <li><a href="#partnerships" class="hover:text-cyan-400 transition-colors">Partnerships</a></li>
+                        <li><a href="#solutions" class="hover:text-cyan-400 transition-colors">Solutions</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Investors</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 sm:mt-16 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-gray-400 font-light text-sm text-center sm:text-left">
+                    &copy; 2024 DOT Technology. All rights reserved.
+                </p>
+                <div class="flex space-x-6 sm:space-x-8 mt-4 sm:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors font-light text-sm">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors font-light text-sm">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors font-light text-sm">Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const navHeight = 64; // Height of fixed navigation
+            const elementPosition = element.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        }
+        
+        // Add click handlers to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                scrollToSection(sectionId);
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with section-fade class
+        document.querySelectorAll('.section-fade').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-blue-600');
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form. In a real implementation, this would send your message to DOT Technology.');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e5e1c340f47545',t:'MTc1Nzc0ODAyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
