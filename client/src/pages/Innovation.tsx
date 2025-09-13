@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import LazyImage from "../components/LazyImage";
+import PageTransition from "@/components/PageTransition";
 
 const Innovation = () => {
   useEffect(() => {
@@ -35,7 +36,7 @@ const Innovation = () => {
   }, []);
 
   return (
-    <div className="fade-in">
+    <PageTransition>
       <section className="min-h-screen pt-16 sm:pt-20 dark-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
           <div className="text-center mb-16 section-fade">
@@ -117,7 +118,7 @@ const Innovation = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 };
 

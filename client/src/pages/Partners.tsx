@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import LazyImage from "../components/LazyImage";
+import PageTransition from "@/components/PageTransition";
 
 const Partners = () => {
   useEffect(() => {
@@ -36,7 +37,7 @@ const Partners = () => {
   }, []);
 
   return (
-    <div className="fade-in">
+    <PageTransition>
       <section className="min-h-screen pt-16 sm:pt-20 dark-section">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
           <div className="text-center mb-16 section-fade">
@@ -149,10 +150,12 @@ const Partners = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/contact" data-testid="button-become-partner">
-                <button className="tech-button text-white px-6 py-3 font-normal text-sm tracking-wide rounded-lg mt-8">
-                  Become a Partner
-                </button>
+              <Link 
+                href="/contact" 
+                data-testid="button-become-partner"
+                className="tech-button text-white px-6 py-3 font-normal text-sm tracking-wide rounded-lg mt-8 inline-block"
+              >
+                Become a Partner
               </Link>
             </div>
             <div className="section-fade">
@@ -166,7 +169,7 @@ const Partners = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 };
 

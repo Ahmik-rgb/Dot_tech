@@ -39,10 +39,9 @@ const Navigation = () => {
                   key={item.href} 
                   href={item.href}
                   data-testid={`link-nav-${item.label.toLowerCase()}`}
+                  className={`nav-link text-gray-300 font-normal text-sm ${location === item.href ? 'active' : ''}`}
                 >
-                  <a className={`nav-link text-gray-300 font-normal text-sm ${location === item.href ? 'active' : ''}`}>
-                    {item.label}
-                  </a>
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -69,10 +68,9 @@ const Navigation = () => {
               key={item.href} 
               href={item.href}
               data-testid={`link-mobile-${item.label.toLowerCase()}`}
+              className="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0"
             >
-              <a className="block py-3 text-gray-300 font-normal text-sm border-b border-white/10 last:border-b-0">
-                {item.label}
-              </a>
+              {item.label}
             </Link>
           ))}
         </div>

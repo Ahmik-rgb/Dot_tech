@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
+import PageTransition from "@/components/PageTransition";
 
 const Home = () => {
   useEffect(() => {
@@ -35,7 +36,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="fade-in">
+    <PageTransition>
       {/* Hero Section */}
       <section className="hero-bg min-h-screen flex items-center pt-16 sm:pt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
@@ -49,15 +50,19 @@ const Home = () => {
               DOT Technology is building Africa's future in technology manufacturing
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 section-fade">
-              <Link href="/about" data-testid="button-learn-more">
-                <button className="tech-button text-white px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
-                  Learn More
-                </button>
+              <Link 
+                href="/about" 
+                data-testid="button-learn-more"
+                className="tech-button text-white px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg"
+              >
+                Learn More
               </Link>
-              <Link href="/partners" data-testid="button-partner-with-us">
-                <button className="tech-button-outline px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg">
-                  Partner With Us
-                </button>
+              <Link 
+                href="/partners" 
+                data-testid="button-partner-with-us"
+                className="tech-button-outline px-6 sm:px-8 py-3 sm:py-4 font-normal text-sm tracking-wide w-full sm:w-auto rounded-lg"
+              >
+                Partner With Us
               </Link>
             </div>
           </div>
@@ -98,7 +103,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageTransition>
   );
 };
 

@@ -8,7 +8,7 @@ interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   skeletonClassName?: string;
   ratio?: string;
   eager?: boolean;
-  fetchPriority?: 'high' | 'low' | 'auto';
+  fetchpriority?: 'high' | 'low' | 'auto';
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -21,7 +21,7 @@ const LazyImage = ({
   skeletonClassName = "",
   ratio = "4/3",
   eager = false,
-  fetchPriority = "auto",
+  fetchpriority = "auto",
   onLoad,
   onError,
   ...rest 
@@ -125,7 +125,7 @@ const LazyImage = ({
           }`}
           loading={eager ? "eager" : "lazy"}
           decoding="async"
-          fetchPriority={fetchPriority}
+          fetchpriority={fetchpriority}
           onLoad={handleImageLoad}
           onError={handleImageError}
           data-testid={testId}
