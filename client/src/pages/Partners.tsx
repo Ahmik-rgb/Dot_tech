@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
+import LazyImage from "../components/LazyImage";
 
 const Partners = () => {
   useEffect(() => {
@@ -155,9 +156,9 @@ const Partners = () => {
               </Link>
             </div>
             <div className="section-fade">
-              <img 
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="African business partnership meeting" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="African business partnership meeting"
                 className="rounded-xl w-full h-auto muted-color"
                 data-testid="img-partnership-meeting"
               />

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import LazyImage from "../components/LazyImage";
 
 const Innovation = () => {
   useEffect(() => {
@@ -48,9 +49,9 @@ const Innovation = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div className="section-fade">
-              <img 
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="African researchers in technology laboratory" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="African researchers in technology laboratory"
                 className="rounded-xl w-full h-auto muted-color"
                 data-testid="img-tech-laboratory"
               />
@@ -93,9 +94,9 @@ const Innovation = () => {
               <p className="text-gray-400 leading-relaxed mb-6">
                 Developing integrated technology solutions for sustainable urban development across African cities.
               </p>
-              <img 
-                src="https://pixabay.com/get/geee23603353508524d47c2ee8e4105cfae3c21e5588a0a7fb8b8ccc571bfdaec3dd3dc7d208850e102050d9219dbca61ef28396898a5b2f8370035d66899622a_1280.jpg" 
-                alt="Modern African city skyline" 
+              <LazyImage
+                src="https://pixabay.com/get/geee23603353508524d47c2ee8e4105cfae3c21e5588a0a7fb8b8ccc571bfdaec3dd3dc7d208850e102050d9219dbca61ef28396898a5b2f8370035d66899622a_1280.jpg"
+                alt="Modern African city skyline"
                 className="rounded-lg w-full h-48 object-cover muted-color"
                 data-testid="img-smart-city"
               />
@@ -106,9 +107,9 @@ const Innovation = () => {
               <p className="text-gray-400 leading-relaxed mb-6">
                 Leveraging technology to improve healthcare access and quality in remote and underserved areas.
               </p>
-              <img 
-                src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" 
-                alt="Healthcare technology in Africa" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                alt="Healthcare technology in Africa"
                 className="rounded-lg w-full h-48 object-cover muted-color"
                 data-testid="img-healthcare-tech"
               />

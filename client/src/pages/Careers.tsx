@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import LazyImage from "../components/LazyImage";
 
 const Careers = () => {
   useEffect(() => {
@@ -49,9 +50,9 @@ const Careers = () => {
           {/* Company Culture */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
             <div className="section-fade">
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Diverse African tech team collaborating" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="Diverse African tech team collaborating"
                 className="rounded-xl w-full h-auto muted-color"
                 data-testid="img-team-collaboration"
               />

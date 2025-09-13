@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import LazyImage from "../components/LazyImage";
 
 const Solutions = () => {
   useEffect(() => {
@@ -152,9 +153,9 @@ const Solutions = () => {
             <div className="card-hover p-8 rounded-xl" data-testid="card-featured-solution">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <img 
-                    src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                    alt="African electronics manufacturing line" 
+                  <LazyImage
+                    src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                    alt="African electronics manufacturing line"
                     className="rounded-lg w-full h-auto muted-color"
                     data-testid="img-electronics-manufacturing"
                   />

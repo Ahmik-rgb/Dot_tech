@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LazyImage from "../components/LazyImage";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -204,9 +205,9 @@ const Contact = () => {
                 </div>
               </div>
 
-              <img 
-                src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=300" 
-                alt="Modern African office building" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=300"
+                alt="Modern African office building"
                 className="rounded-xl w-full h-48 object-cover muted-color"
                 data-testid="img-office-building"
               />

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import LazyImage from "../components/LazyImage";
 
 const About = () => {
   useEffect(() => {
@@ -60,9 +61,9 @@ const About = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 section-fade">
-              <img 
-                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern African technology manufacturing facility" 
+              <LazyImage
+                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="Modern African technology manufacturing facility"
                 className="rounded-xl shadow-lg w-full h-auto muted-color"
                 data-testid="img-manufacturing-facility"
               />
