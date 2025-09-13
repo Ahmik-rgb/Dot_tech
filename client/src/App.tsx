@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/Navigation";
 import LoadingOverlay from "@/components/LoadingOverlay";
+import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Solutions from "@/pages/Solutions";
@@ -43,6 +44,7 @@ function Router() {
           <Route component={NotFound} />
         </Switch>
       </AnimatePresence>
+      <Footer />
     </>
   );
 }
