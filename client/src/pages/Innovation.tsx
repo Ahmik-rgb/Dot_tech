@@ -96,7 +96,7 @@ const Innovation = () => {
                 Developing integrated technology solutions for sustainable urban development across African cities.
               </p>
               <LazyImage
-                src="https://pixabay.com/get/geee23603353508524d47c2ee8e4105cfae3c21e5588a0a7fb8b8ccc571bfdaec3dd3dc7d208850e102050d9219dbca61ef28396898a5b2f8370035d66899622a_1280.jpg"
+                src="/smart.png"
                 alt="Modern African city skyline"
                 className="rounded-lg w-full h-48 object-cover muted-color"
                 data-testid="img-smart-city"

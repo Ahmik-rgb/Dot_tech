@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,41 +23,7 @@ const Footer = () => {
               </p>
             </div>
             
-            {/* Social Media Links */}
-            <div className="flex space-x-4">
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-white/5 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/10 hover:border-primary/30"
-                data-testid="social-linkedin"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-white/5 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/10 hover:border-primary/30"
-                data-testid="social-twitter"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-white/5 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/10 hover:border-primary/30"
-                data-testid="social-github"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-white/5 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/10 hover:border-primary/30"
-                data-testid="social-facebook"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
-              </a>
-            </div>
+            {/* Social links removed per request */}
           </div>
 
           {/* Company Links */}
@@ -70,6 +36,13 @@ const Footer = () => {
                 data-testid="footer-link-about"
               >
                 About Us
+              </Link>
+              <Link 
+                href="/solutions" 
+                className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
+                data-testid="footer-link-innovation"
+              >
+                Solutions
               </Link>
               <Link 
                 href="/innovation" 
@@ -92,13 +65,6 @@ const Footer = () => {
               >
                 Partners
               </Link>
-              <a 
-                href="#" 
-                className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
-                data-testid="footer-link-news"
-              >
-                News & Updates
-              </a>
             </nav>
           </div>
 
@@ -114,28 +80,28 @@ const Footer = () => {
                 Technology Solutions
               </Link>
               <a 
-                href="#" 
+                href="/solutions" 
                 className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
                 data-testid="footer-link-consulting"
               >
                 Consulting Services
               </a>
               <a 
-                href="#" 
+                href="/solutions" 
                 className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
                 data-testid="footer-link-research"
               >
                 Research & Development
               </a>
               <a 
-                href="#" 
+                href="/solutions" 
                 className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
                 data-testid="footer-link-training"
               >
                 Training Programs
               </a>
               <a 
-                href="#" 
+                href="/solutions" 
                 className="block text-gray-400 hover:text-primary transition-colors duration-300 text-sm"
                 data-testid="footer-link-support"
               >
@@ -152,9 +118,8 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Technology Hub, Innovation District<br />
-                    Lagos, Nigeria<br />
-                    West Africa
+                    Kadco Building #2,
+                    Room 305<br></br> Ethio China Friendship Road<br></br> Addis Ababa<br></br>Ethiopia
                   </p>
                 </div>
               </div>
@@ -162,22 +127,22 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <a 
-                  href="tel:+234-1-234-5678" 
+                  href="tel:+2511147070718" 
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                   data-testid="contact-phone"
                 >
-                  +234 (1) 234-5678
+                  +251114707071
                 </a>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <a 
-                  href="mailto:info@dottechnology.africa" 
+                  href="mailto:info@dot-techafrica.com" 
                   className="text-gray-300 hover:text-primary transition-colors text-sm"
                   data-testid="contact-email"
                 >
-                  info@dottechnology.africa
+                  info@dot-techafrica.com
                 </a>
               </div>
 
@@ -192,71 +157,16 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-white font-semibold text-lg mb-2">Stay Updated</h3>
-              <p className="text-gray-400 text-sm">
-                Subscribe to our newsletter for the latest updates on African technology innovation.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
-                data-testid="input-newsletter-email"
-              />
-              <button 
-                className="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 hover:scale-105 font-medium"
-                data-testid="button-newsletter-subscribe"
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10 bg-black/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {currentYear} DOT Technology. All rights reserved.
+          <div className="flex items-center justify-center">
+              <div className="text-gray-400 text-sm text-center">
+                © {currentYear} DOT Technology. All rights reserved.
+              </div>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm">
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-primary transition-colors"
-                data-testid="footer-link-privacy"
-              >
-                Privacy Policy
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-primary transition-colors"
-                data-testid="footer-link-terms"
-              >
-                Terms of Service
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-primary transition-colors"
-                data-testid="footer-link-cookies"
-              >
-                Cookie Policy
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-primary transition-colors"
-                data-testid="footer-link-accessibility"
-              >
-                Accessibility
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </footer>

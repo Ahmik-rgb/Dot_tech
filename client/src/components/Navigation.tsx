@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+import dotLogo from "../../../dot logo.jpg";
 
 const Navigation = () => {
   const [location] = useLocation();
@@ -26,8 +27,8 @@ const Navigation = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/" data-testid="link-home-logo">
-                <div className="w-32 h-8 sm:w-auto sm:h-auto rounded-md flex items-center justify-center" style={{background: "hsla(0, 0%, 100%, 0.3)"}}>
-                  <span className="text-primary font-bold text-xl">DOT</span>
+                <div className="w-48 h-16 sm:w-56 sm:h-20 rounded-[5px] flex items-center justify-center">
+                  <img src={dotLogo} alt="DOT logo" className="h-14 sm:h-16 object-contain max-w-full" />
                 </div>
               </Link>
             </div>

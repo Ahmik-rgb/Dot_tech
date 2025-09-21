@@ -45,8 +45,42 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    // Submit form data to Web3forms
+    (async () => {
+      setIsSubmitting(true);
+      setSubmitError('');
+      try {
+        const payload = {
+          access_key: '3e89f0c6-e942-42dd-ac45-8e004bda41de',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message,
+          // optional: redirect: 'https://yourdomain.com/thank-you'
+        };
+
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          setSubmitSuccess(true);
+          setFormData({ name: '', email: '', company: '', subject: '', message: '' });
+        } else {
+          setSubmitError(data.message || 'Failed to send message.');
+        }
+      } catch (err) {
+        setSubmitError('An error occurred while sending your message.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    })();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -55,6 +89,10 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   return (
     <PageTransition>
@@ -74,6 +112,14 @@ const Contact = () => {
             <div className="card-hover p-8 rounded-xl section-fade" data-testid="contact-form">
               <h2 className="text-2xl font-semibold text-white mb-6">Send us a message</h2>
               <form className="space-y-6" onSubmit={handleSubmit}>
+                {/* Hidden access key for Web3forms */}
+                <input type="hidden" name="access_key" value="3e89f0c6-e942-42dd-ac45-8e004bda41de" />
+                {submitSuccess && (
+                  <div className="p-3 bg-green-800 text-green-200 rounded">Your message has been sent. Thank you!</div>
+                )}
+                {submitError && (
+                  <div className="p-3 bg-red-800 text-red-200 rounded">{submitError}</div>
+                )}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                   <input 
@@ -115,20 +161,30 @@ const Contact = () => {
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-                  <select 
-                    id="subject" 
-                    name="subject" 
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
-                    data-testid="select-subject"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="partnership">Partnership Inquiry</option>
-                    <option value="careers">Career Opportunities</option>
-                    <option value="solutions">Technology Solutions</option>
-                    <option value="general">General Inquiry</option>
-                  </select>
+                  <div className="relative">
+                    <select 
+                      id="subject" 
+                      name="subject" 
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#07122b] border border-[#2aa0ff] rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-[#2aa0ff] focus:border-transparent appearance-none pr-10"
+                      data-testid="select-subject"
+                      style={{backgroundImage: 'none'}}
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="partnership">Partnership Inquiry</option>
+                      <option value="careers">Career Opportunities</option>
+                      <option value="solutions">Technology Solutions</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="other">Other</option>
+                    </select>
+                    {/* Custom arrow */}
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      <svg className="w-4 h-4 text-[#7fd1ff]" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M6 8l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
@@ -147,8 +203,9 @@ const Contact = () => {
                   type="submit" 
                   className="tech-button text-white px-6 py-3 font-normal text-sm tracking-wide w-full rounded-lg"
                   data-testid="button-send-message"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
@@ -164,7 +221,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <p className="text-white font-medium">Address</p>
-                      <p className="text-gray-400">123 Innovation Drive<br/>Tech City, Lagos<br/>Nigeria</p>
+                      <p className="text-gray-400">Kadco Building #2<br/>Room 305, Ethio China Friendship Road<br/>Addis Ababa, Ethiopia</p>
                     </div>
                   </div>
                   <div className="flex items-start" data-testid="contact-phone">
@@ -173,7 +230,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <p className="text-white font-medium">Phone</p>
-                      <p className="text-gray-400">+234 (0) 123 456 789</p>
+                      <p className="text-gray-400">+251114707071</p>
                     </div>
                   </div>
                   <div className="flex items-start" data-testid="contact-email">
@@ -182,7 +239,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <p className="text-white font-medium">Email</p>
-                      <p className="text-gray-400">hello@dottechnology.com</p>
+                      <p className="text-gray-400">info@dot-techafrica.com</p>
                     </div>
                   </div>
                 </div>

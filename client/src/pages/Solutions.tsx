@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import LazyImage from "../components/LazyImage";
+import iotImage from "../../..//iot.jpg";
 import PageTransition from "@/components/PageTransition";
 
 const Solutions = () => {
@@ -232,7 +233,7 @@ const Solutions = () => {
                 </div>
                 <div>
                   <LazyImage
-                    src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                    src={iotImage}
                     alt="IoT sensor network deployment in African farm"
                     className="rounded-xl w-full h-auto muted-color"
                     data-testid="img-iot-deployment"
